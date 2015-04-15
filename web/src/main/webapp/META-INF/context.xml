@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- sessionCookiePathUsesTrailingSlash: https://vaadin.com/forum/-/message_boards/view_message/1220359-->
+<Context antiJARLocking="true" path="/test" sessionCookiePathUsesTrailingSlash='false'>
+    <Manager pathname="" />
+</Context>

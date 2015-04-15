@@ -1,0 +1,29 @@
+apply plugin: 'war'
+
+repositories {
+    mavenCentral()
+}
+
+ext.libraries = [
+        servlet: 'javax.servlet:javax.servlet-api:3.0.1'
+]
+
+dependencies {
+    compile('net.jini:jsk-lib:2.2.2')   // jsk-platform is dependency, just as jsk-resources (starter)
+    compile('net.jini:jsk-dl:2.2.2')
+    compile('org.apache.river:outrigger-dl:2.2.2')
+
+    providedCompile(libraries.servlet)
+}
+
+ext.webAppTmpDir = buildDir.getPath() + "/tmp/web-ui/"
+war {
+    war.appendix = 'test'
+    from('src/main/webapp')
+    webInf {
+        into('classes') {
+            from sourceSets.main.getOutput().classesDir
+        }
+    }
+}
+
