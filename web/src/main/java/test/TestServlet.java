@@ -25,7 +25,7 @@ public class TestServlet extends HttpServlet {
     public void init() throws ServletException {
         LOG.entering(getClass().getName(), "init");
         try {
-            serviceManager = new ServiceManager(new String[]{"kuti"});
+            serviceManager = new ServiceManager(new String[]{System.getProperty("user.name")});
             LOG.info("service manager created");
         }
         catch (IOException e) {
