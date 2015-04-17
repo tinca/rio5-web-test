@@ -30,9 +30,13 @@ public class ServiceManager {
     }
 
     private void init() throws IOException {
-        LOG.info("Security manager: " + System.getSecurityManager());
-        LOG.info("Policy: " + Policy.getPolicy());
-        LOG.info("groups: " + groups[0]);
+        StringBuilder info = new StringBuilder();
+        info.append("=====================================\n");
+        info.append("Security manager: ").append(System.getSecurityManager()).append("\n");
+        info.append("Policy: ").append(Policy.getPolicy()).append("\n");
+        info.append("groups: ").append(groups[0]).append("\n");
+        info.append("=====================================");
+        LOG.info(info.toString());
         discoveryManagement = new LookupDiscovery(groups);
         sdm = new ServiceDiscoveryManager(discoveryManagement, null);
         ServiceTemplate tmpl = new ServiceTemplate(null, new Class[]{JavaSpace.class}, null);
