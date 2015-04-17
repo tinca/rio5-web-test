@@ -5,15 +5,17 @@ repositories {
 }
 
 ext.libraries = [
-        servlet: 'javax.servlet:javax.servlet-api:3.0.1'
+    servlet: 'javax.servlet:javax.servlet-api:3.0.1'
 ]
 
 dependencies {
-    compile('net.jini:jsk-lib:2.2.2')   // jsk-platform is dependency, just as jsk-resources (starter)
-    compile('net.jini:jsk-dl:2.2.2')
-    compile('org.apache.river:outrigger-dl:2.2.2')
-
-    providedCompile(libraries.servlet)
+    compile('net.jini:jsk-lib:2.2.2') {
+        /* We do not need to include jsk-platform into the war,
+         * it will part of the system classloader */
+        exclude module: "jsk-platform"
+    }
+    providedCompile "net.jini:jsk-platform:2.2.2"
+    providedCompile libraries.servlet
 }
 
 ext.webAppTmpDir = buildDir.getPath() + "/tmp/web-ui/"
