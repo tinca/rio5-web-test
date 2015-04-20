@@ -2,6 +2,7 @@ apply plugin: 'war'
 
 repositories {
     mavenCentral()
+    maven { url "http://www.rio-project.org/maven2" }
 }
 
 ext.libraries = [
